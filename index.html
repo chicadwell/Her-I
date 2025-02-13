@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Surprise</title>
+  <style>
+    body {
+      background-color: #b3cde0;
+      font-family: 'Arial', sans-serif;
+      color: #1c3d57;
+      text-align: center;
+    }
+    .btn {
+      padding: 15px 25px;
+      margin: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .yes {
+      background-color: #ff70a6;
+    }
+    .no {
+      background-color: #ff6a6a;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+    }
+    .heart {
+      position: absolute;
+      font-size: 5rem;
+      top: -100px;
+      animation: heartAnimation 2s ease-in-out forwards;
+    }
+    @keyframes heartAnimation {
+      0% {
+        top: -100px;
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+    #jumpText {
+      font-size: 30px;
+      animation: jump 1s ease-in-out;
+    }
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="page1">
+    <h1>Will you be my Valentine?</h1>
+    <button class="btn yes" onclick="showHeart('yes')">Yes</button>
+    <button class="btn no" onclick="showHeart('no')">No</button>
+  </div>
+
+  <div id="page2" style="display:none;">
+    <video width="100%" height="auto" autoplay muted>
+      <source src="film.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p id="jumpText">آریانا نینی قشنگ چیکاش این اولین ولنتاینیه ک هباهمیم و من خوش شانس ترین ادمیم که فرشته ای مثل تورو تو این دنیا پیدا کردم و بهترین لحظات عمرمو با تو رقم زدم و مثل همیشه، عاشقتم.</p>
+    <a href="https://t.me/+Ooq0zMd4vewyYjBk" class="btn" target="_blank">پلی لیست من</a>
+  </div>
+
+  <script>
+    function showHeart(choice) {
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
+      
+      if(choice === 'yes') {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        document.body.appendChild(heart);
+      } else {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💔';
+        document.body.appendChild(heart);
+      }
+
+      setTimeout(() => {
+        document.getElementById('jumpText').style.animation = 'jump 1s ease-in-out';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
